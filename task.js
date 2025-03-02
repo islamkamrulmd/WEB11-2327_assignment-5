@@ -7,12 +7,12 @@ document.getElementById('weekday').textContent = `${weekday},`;
 document.getElementById('date').textContent = `${month} ${day} ${year}`;
 
 // Task Count Elements
-const taskAssignedElement = document.querySelector(".text-gray-800"); // Task Assigned count
-const completedTaskElement = document.querySelector(".font-bold.text-2xl"); // Completed count
+const taskAssignedElement = document.querySelector(".text-gray-800"); 
+const completedTaskElement = document.querySelector(".font-bold.text-2xl"); 
 
 // Initial Task Counts
-let taskAssignedCount = 6; // Start from 6
-let completedCount = 0; // Start from 0
+let taskAssignedCount = 6; 
+let completedCount = 0; 
 
 // Set initial UI values
 taskAssignedElement.innerText = taskAssignedCount;
@@ -43,54 +43,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Task Completion & Alert
+// alert box
 document.addEventListener("DOMContentLoaded", function () {
     const taskButtons = document.querySelectorAll(".bg-blue-600");
-    let totalTasks = taskButtons.length;
     let completedTasks = 0;
+    const totalTasks = taskButtons.length;
 
     taskButtons.forEach((button) => {
         if (button.innerText.trim() !== "Clear History") {
             button.addEventListener("click", function () {
                 completedTasks++;
 
-                // Update Task Counts
-                if (taskAssignedCount > 0) {
-                    taskAssignedCount--;
-                }
-                if (completedCount < totalTasks) {
-                    completedCount++;
-                }
 
-                // Update UI
-                taskAssignedElement.innerText = taskAssignedCount;
-                completedTaskElement.innerText = completedCount;
-
-                // Show alert correctly
-                if (completedCount === totalTasks) {
-                    setTimeout(() => {
-                        alert("Congratulations, you have completed all the tasks before the deadline!");
-                    }, 100);
+                if (completedTasks === totalTasks - 1) {
+                    alert("Congratulations, you have completed all the tasks before the deadline!");
                 } else {
-                    setTimeout(() => {
-                        alert("Board updated successfully!");
-                    }, 100);
+                    alert("Board updated successfully!");
                 }
 
                 button.disabled = true;
                 button.classList.add("bg-gray-400", "cursor-not-allowed");
                 button.classList.remove("bg-blue-600", "hover:bg-blue-700", "hover:scale-105");
                 button.innerText = "Completed";
-            }, { once: true }); // Ensures event fires only once per button
+            });
         }
     });
 });
 
 // Activity Log (Logging Completed Tasks)
 document.addEventListener("DOMContentLoaded", function () {
-    const taskButtons = document.querySelectorAll(".bg-blue-600"); // Selecting all task "Completed" buttons
-    const activityLog = document.getElementById("dtd"); // Activity Log container under the dotted border
-    const clearHistoryButton = document.getElementById("clear-button"); // Clear History button
+    const taskButtons = document.querySelectorAll(".bg-blue-600"); 
+    const activityLog = document.getElementById("dtd"); 
+    const clearHistoryButton = document.getElementById("clear-button"); 
     let totalTasks = taskButtons.length;
     let completedTasks = 0;
 
@@ -98,19 +82,18 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             completedTasks++;
 
-            // Get the task name from the card
+            // Get task name
             const taskName = button.closest(".bg-gray-300").querySelector("h2").innerText;
 
             // Get current time
             const now = new Date();
             const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
-            // Create a new log entry
+            // Create new log
             const logEntry = document.createElement("p");
             logEntry.classList.add("bg-white", "p-2", "rounded-lg", "shadow-sm", "mt-2", "w-full", "text-gray-700", "text-sm");
             logEntry.innerText = `You have completed the task "${taskName}" at ${timeString}`;
 
-            // Append log entry to Activity Log (under the dotted border)
             activityLog.appendChild(logEntry);
 
             // Disable the button after clicking
@@ -118,13 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
             button.classList.add("bg-gray-400", "cursor-not-allowed");
             button.classList.remove("bg-blue-600", "hover:bg-blue-700", "hover:scale-105");
             button.innerText = "Completed";
-        }, { once: true }); // Ensures event fires only once per button
+        }, { once: true }); 
     });
 
-    // Clear History Button Functionality
+    // Clear History 
     if (clearHistoryButton) {
         clearHistoryButton.addEventListener("click", function () {
-            activityLog.innerHTML = ""; // Clear all log entries
+            activityLog.innerHTML = ""; 
             alert("History cleared successfully!");
         });
     }
