@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Dev Board</title>
+
+    <!-- DaisyUI & Tailwind CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100 flex flex-col items-center min-h-screen">
+    <header class="w-full flex justify-center">
+        <nav
+            class="w-full max-w-screen-xl h-24 bg-gray-200 rounded-xl shadow-md mt-6 px-6 flex justify-between items-center">
+            
+            <div class="flex gap-2 text-3xl items-center">
+                <img class="w-12" src="assets/logo.png" alt="">
+                <h1>Dev <span class="font-bold">Board</span></h1>
+            </div>
+
+            <!-- Back to Desk button -->
+            <div>
+                <button onclick="goBack()"
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg transition-all duration-300 hover:bg-blue-700 hover:scale-105">
+                    Back to Desk
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="w-full max-w-screen-xl mt-6 px-6">
+        <h1 class="text-4xl font-bold text-gray-800 text-center">Blogs</h1>
+
+        <!-- Blogs -->
+        <div class="mt-8 space-y-6">
+            <!-- Question 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-xl font-bold text-gray-800">Question-1: What are the different ways to select an element
+                    in the DOM?</h2>
+                <p class="text-gray-600 mt-2">You can select an element in the DOM using methods like
+                    <code>document.getElementById()</code>,
+                    <code>document.getElementsByClassName()</code>, <code>document.getElementsByTagName()</code>,
+                    <code>document.querySelector()</code>, and <code>document.querySelectorAll()</code>.
+                </p>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-xl font-bold text-gray-800">Question-1: What are the different ways to select an element
+                    in the DOM?</h2>
+                <p class="text-gray-600 mt-2">
+                    Elements in the DOM can be selected using methods like getElementById for IDs,
+                    getElementsByClassName for classes, getElementsByTagName for tags,
+                    querySelector for the first matching element, and querySelectorAll for all matching elements.
+                </p>
+            </div>
+
+
+            <!-- Question 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-xl font-bold text-gray-800">Question-3: What is event delegation in the DOM?</h2>
+                <p class="text-gray-600 mt-2">
+                    Event delegation is when a parent element listens for events on its child elements. Instead of
+                    adding event listeners to each child,
+                    you add one listener to the parent and check which child was clicked.
+                </p>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h2 class="text-xl font-bold text-gray-800">Question-4: What is event bubbling in the DOM?</h2>
+                <p class="text-gray-600 mt-2">
+                    Event bubbling happens when an event starts at the deepest element and moves up to the parent
+                    elements.
+                    This means if you click a child element, its parent’s event listeners will also be triggered.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+
+</html>

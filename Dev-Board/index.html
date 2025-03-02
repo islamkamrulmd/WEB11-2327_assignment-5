@@ -5,12 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Board</title>
-
     <!-- Daisy CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @layer utilities {
+            @keyframes scaleText {
+
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+            }
+
+            .animate-scale {
+                animation: scaleText 2s ease-in-out infinite;
+            }
+        }
+    </style>
+
 </head>
 
 <body class="bg-gray-100 flex flex-col items-center min-h-screen">
@@ -28,7 +47,7 @@
             <div class="flex gap-6 items-center">
                 <div class="flex items-center gap-2 border border-2 bg-gray-300 rounded-3xl px-4 py-2">
                     <img class="w-6" src="assets/checkbox.png" alt="">
-                    <h1 class="font-bold text-2xl ">N</h1>
+                    <h1 class="font-bold text-2xl "></h1>
                 </div>
                 <div>
                     <img class="w-12 bg-gray-300 p-2 rounded-4xl transition-all duration-300 hover:scale-110 hover:bg-gray-400 hover:shadow-lg cursor-pointer"
@@ -50,20 +69,22 @@
                     </div>
                     <div>
                         <p class="text-gray-500 text-sm">Task Assigned</p>
-                        <h1 class="text-xl font-bold text-gray-800">05</h1>
+                        <h1 class="text-xl font-bold text-gray-800"></h1>
                     </div>
                 </div>
 
                 <!-- Gradient bg -->
-                <div
-                    class="flex justify-center items-center gap-5 w-3/4 h-25 bg-[linear-gradient(130.70deg,_rgb(55,82,253)_0.419%,_rgb(108,127,250)_52.66%,_rgb(155,168,248)_99.733%)] rounded-xl px-10">
-                    <img class="w-16" src="assets/board.png" alt="">
+                <a href="blog.html" class="w-3/4">
+                    <div
+                        class="flex justify-center items-center gap-5 w-full h-25 bg-[linear-gradient(130.70deg,_rgb(55,82,253)_0.419%,_rgb(108,127,250)_52.66%,_rgb(155,168,248)_99.733%)] rounded-xl px-10 transition-transform duration-300 hover:scale-105 cursor-pointer">
+                        <img class="w-16" src="assets/board.png" alt="">
 
-                    <div class="text-xl text-white font-semibold">
-                        <h2>Discover something</h2>
-                        <h2>New Today!</h2>
+                        <div class="text-xl text-white font-semibold animate-scale">
+                            <h2>Discover something New Today!</h2>
+                        </div>
                     </div>
-                </div>
+                </a>
+
                 <!-- calendar -->
                 <div class="w-1/4 h-25 bg-gray-300 rounded-xl items-center justify-between flex px-3">
                     <img class="" src="assets/calender.png" alt="">
@@ -189,7 +210,7 @@
             </div>
 
             <div class="mt-4 flex justify-center w-full">
-                <button
+                <button id="clear-button"
                     class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-blue-700 hover:scale-105">
                     Clear History
                 </button>

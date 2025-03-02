@@ -6,6 +6,8 @@ const [weekday, month, day, year] = formattedDate.split(' ');
 document.getElementById('weekday').textContent = `${weekday},`;
 document.getElementById('date').textContent = `${month} ${day} ${year}`;
 
+
+//Color change (challenge part)
 document.addEventListener("DOMContentLoaded", function () {
     const themeButton = document.querySelector(".w-12.bg-gray-300.p-2.rounded-4xl");
     const body = document.body;
@@ -29,3 +31,46 @@ document.addEventListener("DOMContentLoaded", function () {
         body.style.backgroundColor = randomColor;
     });
 });
+
+// alert box
+document.addEventListener("DOMContentLoaded", function () {
+    const taskButtons = document.querySelectorAll(".bg-blue-600");
+    let completedTasks = 0;
+    const totalTasks = taskButtons.length;
+
+    taskButtons.forEach((button) => {
+        if (button.innerText.trim() !== "Clear History") {
+            button.addEventListener("click", function () {
+                completedTasks++;
+
+
+                if (completedTasks === totalTasks - 1) {
+                    alert("Congratulations, you have completed all the tasks before the deadline!");
+                } else {
+                    alert("Board updated successfully!");
+                }
+
+                button.disabled = true;
+                button.classList.add("bg-gray-400", "cursor-not-allowed");
+                button.classList.remove("bg-blue-600", "hover:bg-blue-700", "hover:scale-105");
+                button.innerText = "Completed";
+            });
+        }
+    });
+});
+
+//clear button alert
+document.addEventListener("DOMContentLoaded", function () {
+    const clearHistoryButton = document.getElementById("clear-button");
+
+    if (clearHistoryButton) {
+        clearHistoryButton.addEventListener("click", function () {
+            alert("History cleared successfully!");
+        });
+    }
+});
+
+
+
+
+
